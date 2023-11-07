@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import np.com.arunb.animepeak.Adapters.SearchAdapter;
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 import np.com.arunb.animepeak.Sources.GogoAnime;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 

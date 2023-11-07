@@ -26,7 +26,7 @@ import com.bumptech.glide.Glide;
 import np.com.arunb.animepeak.Activity.Profile;
 import np.com.arunb.animepeak.Adapters.MainAdapter;
 
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 import np.com.arunb.animepeak.Sources.GogoAnime;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

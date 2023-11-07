@@ -22,7 +22,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.FileProvider;
 
-import com.example.animepeak.BuildConfig;
+import np.com.arunb.animepeak.BuildConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;

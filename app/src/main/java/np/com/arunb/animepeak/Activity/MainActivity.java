@@ -24,7 +24,7 @@ import np.com.arunb.animepeak.Fragments.SearchFragment;
 import np.com.arunb.animepeak.Fragments.SettingsFragment;
 import np.com.arunb.animepeak.Functions.Fav_object;
 import np.com.arunb.animepeak.Functions.UpdateApp;
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

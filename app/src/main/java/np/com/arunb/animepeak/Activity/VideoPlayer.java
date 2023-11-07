@@ -33,7 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 import np.com.arunb.animepeak.Sources.GogoAnime;
 
 import com.google.android.exoplayer2.ExoPlayer;

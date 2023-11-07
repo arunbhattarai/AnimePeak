@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import np.com.arunb.animepeak.Adapters.FavAdapter;
 import np.com.arunb.animepeak.Functions.Fav_object;
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.FirebaseApp;

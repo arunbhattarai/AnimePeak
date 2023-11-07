@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "np.com.arunb.animepeak"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "np.com.arunb.animepeak"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "Beta"
 

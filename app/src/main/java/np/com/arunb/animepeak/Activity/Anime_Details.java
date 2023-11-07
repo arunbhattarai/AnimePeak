@@ -35,7 +35,7 @@ import np.com.arunb.animepeak.Adapters.Ani_Details_Adapter;
 
 import np.com.arunb.animepeak.Adapters.Ani_Details_Genre_Adapter;
 import np.com.arunb.animepeak.Functions.Fav_object;
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 import np.com.arunb.animepeak.Sources.GogoAnime;
 import com.google.gson.Gson;
 

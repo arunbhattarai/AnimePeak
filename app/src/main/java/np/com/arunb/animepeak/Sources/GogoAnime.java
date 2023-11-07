@@ -51,7 +51,7 @@ import np.com.arunb.animepeak.Adapters.Ani_Details_Genre_Adapter;
 
 import np.com.arunb.animepeak.Adapters.MainAdapter;
 import np.com.arunb.animepeak.Adapters.SearchAdapter;
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 
 import com.google.android.exoplayer2.MediaItem;
 

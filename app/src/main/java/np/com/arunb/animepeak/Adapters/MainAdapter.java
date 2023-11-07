@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import np.com.arunb.animepeak.Activity.Anime_Details;
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 
 
 import java.util.List;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

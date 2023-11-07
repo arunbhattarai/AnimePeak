@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import np.com.arunb.animepeak.Activity.VideoPlayer;
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 
 import org.json.JSONArray;
 

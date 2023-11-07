@@ -23,7 +23,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import np.com.arunb.animepeak.Functions.UpdateApp;
-import com.example.animepeak.R;
+import np.com.arunb.animepeak.R;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
