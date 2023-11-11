@@ -5,18 +5,23 @@ import static np.com.arunb.animepeak.Fragments.HomeFragment.Home_TitleUrlList;
 import static np.com.arunb.animepeak.Fragments.HomeFragment.Home_imageUrlList;
 import static np.com.arunb.animepeak.Fragments.HomeFragment.gogoanime_popular;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 import np.com.arunb.animepeak.Fragments.FavouriteFragment;
 import np.com.arunb.animepeak.Fragments.HomeFragment;
@@ -25,27 +30,6 @@ import np.com.arunb.animepeak.Fragments.SettingsFragment;
 import np.com.arunb.animepeak.Functions.Fav_object;
 import np.com.arunb.animepeak.Functions.UpdateApp;
 import np.com.arunb.animepeak.R;
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -57,33 +41,18 @@ public class MainActivity extends AppCompatActivity {
     public static boolean is_auto_update = false;
     public static boolean is_home = false;
     public static ArrayList<Fav_object> fav_list ;
-    private static FirebaseAuth mAuth;
     public static boolean is_login =false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_main);
-        FirebaseApp.initializeApp(this);
-        mAuth = FirebaseAuth.getInstance();
-
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         FragmentTransaction tr = getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, homeFragment, "HOME_FRAGMENT_TAG");
         tr.addToBackStack(null);
         tr.commit();
-
-
-        // Build a GoogleSignInClient with the options specified by gso.
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if (acct != null) {
-            is_login=true;
-            Log.d("Status","Sucess");
-        }else{
-            Log.d("Status","Failed");
-            is_login=false;
-        }
 
         fav_list = new ArrayList<Fav_object>();
 
@@ -99,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @SuppressLint({"NonConstantResourceId", "RestrictedApi"})
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId()!=R.id.fav){
@@ -152,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         return true;
-
                 }
 
                 return false;
@@ -175,33 +142,5 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-    public static void storeArrayToFirebase() {
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            String userId = user.getUid();
-            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
-
-            databaseRef.setValue(fav_list)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-//                                Toast.makeText(MainActivity.this, "Array stored in Firebase", Toast.LENGTH_SHORT).show();
-                                Log.d("Here","SUCCESS");
-                            } else {
-//                                Toast.makeText(MainActivity.this, "Failed to store array in Firebase", Toast.LENGTH_SHORT).show();
-                                Log.d("Here","Failed");
-                            }
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("Error",e.toString());
-                        }
-                    });
-        }
     }
 }

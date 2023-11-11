@@ -53,8 +53,6 @@ import np.com.arunb.animepeak.Adapters.MainAdapter;
 import np.com.arunb.animepeak.Adapters.SearchAdapter;
 import np.com.arunb.animepeak.R;
 
-import com.google.android.exoplayer2.MediaItem;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,6 +68,8 @@ import java.nio.charset.StandardCharsets;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import androidx.media3.common.MediaItem;
 
 
 public class GogoAnime {

@@ -37,10 +37,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimePeak"
         android:usesCleartextTraffic="true" >
-        <activity
-            android:name="np.com.arunb.animepeak.Activity.Profile"
-            android:exported="false" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="np.com.arunb.animepeak.provider"

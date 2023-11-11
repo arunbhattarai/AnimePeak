@@ -171,7 +171,7 @@ public class SettingsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         String[] quality_lists = getResources().getStringArray(R.array.quality_list);
-        ArrayAdapter videoarrayAdapter = new ArrayAdapter(getContext(), R.layout.dropdown, quality_lists);
+        ArrayAdapter<String> videoarrayAdapter = new ArrayAdapter<>(getContext(), R.layout.dropdown, quality_lists);
         videoautoCompleteTextView.setAdapter(videoarrayAdapter);
     }
 }

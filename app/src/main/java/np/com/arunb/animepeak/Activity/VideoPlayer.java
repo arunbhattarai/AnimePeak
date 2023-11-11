@@ -1,22 +1,12 @@
 package np.com.arunb.animepeak.Activity;
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-
 import android.content.DialogInterface;
 import android.content.Intent;
-
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,20 +19,16 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import android.widget.TextView;
 
-
-import np.com.arunb.animepeak.R;
-import np.com.arunb.animepeak.Sources.GogoAnime;
-
-import com.google.android.exoplayer2.ExoPlayer;
-
-import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
-import com.google.android.exoplayer2.ui.PlayerView;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.media3.common.MediaItem;
+import androidx.media3.common.Player;
+import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.ui.AspectRatioFrameLayout;
+import androidx.media3.ui.PlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,10 +37,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import java.util.concurrent.TimeUnit;
 
-@SuppressLint("StaticFieldLeak")
+import np.com.arunb.animepeak.R;
+import np.com.arunb.animepeak.Sources.GogoAnime;
+
 public class VideoPlayer extends AppCompatActivity {
     private ScaleGestureDetector scaleGestureDetector;
     private GestureDetector gestureDetector;
@@ -83,7 +70,6 @@ public class VideoPlayer extends AppCompatActivity {
     public static JSONArray subtitles;
     public static Uri videoUri;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,14 +105,14 @@ public class VideoPlayer extends AppCompatActivity {
         }
 
         player = new ExoPlayer.Builder(this).build();
-        AnimeName = findViewById(R.id.animeName);
-        EpisodeName = findViewById(R.id.episodeName);
-        ImageButton back = findViewById(R.id.back);
-        previous_eps = findViewById(R.id.previousEpisode);
-        next_eps = findViewById(R.id.nextEpisode);
-        exo_track_selection_view = findViewById(R.id.exo_track_selection_view);
-        exo_quality_txt = findViewById(R.id.exoQuality);
-        exo_remaining_time = findViewById(R.id.exo_remaining_time);
+        AnimeName = videoView.findViewById(R.id.animeName);
+        EpisodeName = videoView.findViewById(R.id.episodeName);
+        ImageButton back = videoView.findViewById(R.id.back);
+        previous_eps = videoView.findViewById(R.id.previousEpisode);
+        next_eps = videoView.findViewById(R.id.nextEpisode);
+        exo_track_selection_view = videoView.findViewById(R.id.exo_track_selection_view);
+        exo_quality_txt = videoView.findViewById(R.id.exoQuality);
+        exo_remaining_time = videoView.findViewById(R.id.exo_remaining_time);
 
         AnimeName.setText(AnimeTitle);
         int Episode = Current + 1;

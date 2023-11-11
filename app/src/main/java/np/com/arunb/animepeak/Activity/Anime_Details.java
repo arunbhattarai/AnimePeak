@@ -2,41 +2,28 @@ package np.com.arunb.animepeak.Activity;
 
 import static np.com.arunb.animepeak.Functions.Fav_object.removeFavByID;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.GridLayoutManager;
-
-import androidx.recyclerview.widget.RecyclerView;
-
-
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-
-
 import android.util.Log;
 import android.view.MenuItem;
-
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
-import np.com.arunb.animepeak.Adapters.Ani_Details_Adapter;
-
-
-import np.com.arunb.animepeak.Adapters.Ani_Details_Genre_Adapter;
-import np.com.arunb.animepeak.Functions.Fav_object;
-import np.com.arunb.animepeak.R;
-import np.com.arunb.animepeak.Sources.GogoAnime;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -47,8 +34,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.glailton.expandabletextview.ExpandableTextView;
+import np.com.arunb.animepeak.Adapters.Ani_Details_Adapter;
+import np.com.arunb.animepeak.Adapters.Ani_Details_Genre_Adapter;
+import np.com.arunb.animepeak.Functions.Fav_object;
+import np.com.arunb.animepeak.R;
+import np.com.arunb.animepeak.Sources.GogoAnime;
 
-@SuppressLint("StaticFieldLeak")
 public class Anime_Details extends AppCompatActivity {
 
     public static ImageView Anime_Image;
@@ -78,7 +69,6 @@ public class Anime_Details extends AppCompatActivity {
     public static List<String> episodeID_list = new ArrayList<>();
     GogoAnime.Gogoanime_details gogoanime_details;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -182,12 +172,11 @@ public class Anime_Details extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("favListJson", favListJson);
         editor.apply();
-        MainActivity.storeArrayToFirebase();
     }
 
     public static List<String> extractEpisodeIds(String json) {
         List<String> episodeIds = new ArrayList<>();
-        JSONObject jsonObject = null;
+        JSONObject jsonObject;
         try {
             jsonObject = new JSONObject(json);
             JSONArray episodesArray = jsonObject.getJSONArray("episodes");
@@ -204,7 +193,6 @@ public class Anime_Details extends AppCompatActivity {
         return episodeIds;
     }
 
-    @SuppressLint("SetTextI18n")
     public void load() {
         if (!isDestroyed() && episodes.length() == 0) {
             // Load the image using Glide or Picasso here

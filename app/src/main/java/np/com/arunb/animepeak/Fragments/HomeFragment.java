@@ -1,8 +1,6 @@
 package np.com.arunb.animepeak.Fragments;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 
 import android.net.Uri;
@@ -21,16 +19,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.bumptech.glide.Glide;
-import np.com.arunb.animepeak.Activity.Profile;
 import np.com.arunb.animepeak.Adapters.MainAdapter;
 
 import np.com.arunb.animepeak.R;
 import np.com.arunb.animepeak.Sources.GogoAnime;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.FirebaseApp;
 
 
 import java.util.ArrayList;
@@ -38,7 +30,6 @@ import java.util.List;
 
 import np.com.arunb.animepeak.Activity.MainActivity;
 
-@SuppressLint("StaticFieldLeak")
 public class HomeFragment extends Fragment {
 
     public static MainAdapter mainAdapter;
@@ -47,14 +38,10 @@ public class HomeFragment extends Fragment {
     public static ImageView more_loading;
     public static TextView network_error;
     TextView titleText;
-    public ImageView profile;
     public static List<String> Home_TitleUrlList = new ArrayList<>();
     public static List<String> Home_imageUrlList = new ArrayList<>();
     public static List<String> Home_IDList = new ArrayList<>();
     public static GogoAnime.Gogoanime_popular gogoanime_popular;
-
-    CardView profile_card;
-    public Uri personPhoto;
     private int currentPage;
     public static GridLayoutManager LayoutManager;
     public static boolean isLoading = false;
@@ -67,7 +54,6 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -75,18 +61,6 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         MainActivity.bottomNavigationView.setSelectedItemId(R.id.home);
-        // Build a GoogleSignInClient with the options specified by gso.
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(requireActivity());
-        if (acct != null) {
-            personPhoto = acct.getPhotoUrl();
-            Glide.with(this)
-                    .load(personPhoto)
-                    .into(profile);
-        } else {
-            Glide.with(this)
-                    .load(R.raw.boy1)
-                    .into(profile);
-        }
     }
 
 
@@ -116,17 +90,7 @@ public class HomeFragment extends Fragment {
         more_loading = requireView().findViewById(R.id.more_loading);
         network_error = requireView().findViewById(R.id.net_error);
         titleText = requireView().findViewById(R.id.home_title);
-        profile_card = requireView().findViewById(R.id.profile_card);
-        profile = requireView().findViewById(R.id.Profile_pic);
 
-
-        FirebaseApp.initializeApp(requireActivity());
-
-
-        profile_card.setOnClickListener(view1 -> {
-            Intent intent = new Intent(getActivity(), Profile.class);
-            startActivity(intent);
-        });
         int orientation = getResources().getConfiguration().orientation;
 
         LayoutManager = null;
@@ -160,8 +124,6 @@ public class HomeFragment extends Fragment {
 
                     currentPage++;
                     fetchData(currentPage);
-
-
                 }
             }
         });
@@ -174,7 +136,6 @@ public class HomeFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (getView() != null) {
-
             fetchData(currentPage);
         }
     }
@@ -188,20 +149,16 @@ public class HomeFragment extends Fragment {
             Home_TitleUrlList.clear();
             Home_imageUrlList.clear();
             Home_IDList.clear();
-
-
         }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         Home_TitleUrlList.clear();
         Home_imageUrlList.clear();
         Home_IDList.clear();
         if (gogoanime_popular != null) {
-
             gogoanime_popular = null;
         }
 
@@ -211,7 +168,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-
         Home_TitleUrlList.clear();
         Home_imageUrlList.clear();
         Home_IDList.clear();
